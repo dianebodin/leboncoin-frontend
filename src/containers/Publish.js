@@ -31,7 +31,9 @@ const Publish = ({ token }) => {
     try {
       e.preventDefault();
       if (!title || !description || !price || !picture) setError(1);
-      else if (isNaN(price) || Math.sign(price) !== 1 || price > 100000) setError(2);
+      else if (title.length > 30) setError(2);
+      else if (description.length > 200) setError(3);
+      else if (isNaN(price) || Math.sign(price) !== 1 || price > 100000) setError(4);
       else {
         const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/offer/publish", formData, { headers: { Authorization: "Bearer " + token, "Content-Type": "multipart/form-data" } });
         setError(0);
@@ -62,7 +64,9 @@ const Publish = ({ token }) => {
 
           <div className="container-err-msg">
             {error === 1 ? <div className="err-msg">Champs à remplir</div> : null}
-            {error === 2 ? <div className="err-msg">Le prix est incorrect</div> : null}
+            {error === 2 ? <div className="err-msg">Le titre doit contenir moins de 30 caractères</div> : null}
+            {error === 3 ? <div className="err-msg">La description doit contenir moins de 200 caractères</div> : null}
+            {error === 4 ? <div className="err-msg">Le prix est incorrect</div> : null}
           </div>
           <input type="submit" value="Valider" />
         </form>

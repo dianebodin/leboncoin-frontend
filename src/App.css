@@ -64,6 +64,9 @@ ul {
   color: white;
   cursor: pointer;
 }
+.publish-button:hover {
+  background: #C0562A;
+}
 .search-link {
   display: flex;
   justify-content: space-around;
@@ -566,10 +569,12 @@ ul {
   background-color: #4183d7;
   color: white;
   font-weight: 700;
+  cursor: pointer;
 }
 .publish-container form input[type="file"] {
   margin-bottom: 20px;
   outline: none;
+  cursor: pointer;
 }
 .publish-container textarea {
   resize: none;
