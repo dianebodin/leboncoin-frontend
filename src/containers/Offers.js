@@ -28,7 +28,7 @@ const Offers = () => {
         setData(response.data);
         setIsLoading(false);
 
-        inputTitle("");
+        setInputTitle("");
       } catch (error) { console.log(error.message); }
     };
     fetchData(); 
@@ -73,7 +73,6 @@ const Offers = () => {
       )}
 
       <Pagination count={data.count} clickPage={clickPage}/>
-
     </>
   );
 }

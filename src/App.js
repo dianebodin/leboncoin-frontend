@@ -7,6 +7,7 @@ import Offers from './containers/Offers';
 import Offer from './containers/Offer';
 import Signup from './containers/Signup';
 import Login from './containers/Login';
+import Publish from './containers/Publish';
 //import Footer from './components/Footer';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -32,6 +33,10 @@ const App = () => {
 
           <Route path="/login">
             <Login setToken={setToken} />
+          </Route>
+
+          <Route path="/publish">
+            <Publish token={token} />
           </Route>
 
           <Route path="/">

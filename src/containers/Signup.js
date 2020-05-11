@@ -11,7 +11,6 @@ const Signup = ({ setToken }) => {
   const [password, setPassword] = useState("");
   const [password2, setPassword2] = useState("");
   const [checkbox, setCheckbox] = useState(false);
-
   const [error, setError] = useState(0);
 
   const handleUsernameChange = e => { setUsername(e.target.value); };
@@ -32,12 +31,9 @@ const Signup = ({ setToken }) => {
       else {
         const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/user/sign_up",
           {
-            email: email,
-            username: username,
-            password: password
+            email, username, password //var = val
           }
         );
-
         setError(0);
         Cookies.set("token", response.data.token, { expires: 100 });
         setToken(response.data.token);

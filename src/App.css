@@ -7,6 +7,17 @@ body {
   overflow-x: hidden;
   position: relative;
 }
+.container-err-msg {
+  position: relative;
+  height: 10px;
+  display: flex;
+}
+.err-msg {
+  color: red;
+  font-size: 10px;
+  position: absolute;
+  bottom: 10px;
+}
 
 /* HEADER */
 
@@ -80,6 +91,9 @@ ul {
 }
 .logout {
   cursor: pointer;
+}
+.publish-link {
+  text-decoration: none;
 }
 
 /* SEARCH */
@@ -446,17 +460,6 @@ ul {
 .conditions span {
   color: #4183d7;
 }
-.container-err-msg {
-  position: relative;
-  height: 10px;
-  display: flex;
-}
-.err-msg {
-  color: red;
-  font-size: 10px;
-  position: absolute;
-  bottom: 10px;
-}
 
 /* LOGIN */
 
@@ -525,6 +528,71 @@ ul {
   text-align: center;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   padding-top: 20px;
+}
+
+/* PUBLISH */
+
+.publish-container {
+  width: 30%;
+  margin: 60px auto;
+  padding: 30px 200px;
+  background-color: white;
+}
+.publish-container .title {
+  font-size: 19px;
+  font-weight: 700;
+  text-align: center;
+  width: 100%;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #f56b2a;
+}
+.publish-container form {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+}
+.publish-title, .publish-container form input[type="submit"] {
+  width: 100%;
+  box-sizing: border-box;
+  height: 45px;
+  border-radius: 5px;
+  outline: none;
+  border: 1px solid #d9e0eb;
+  margin-bottom: 20px;
+  padding-left: 15px;
+}
+.publish-container form input[type="submit"] {
+  background-color: #4183d7;
+  color: white;
+  font-weight: 700;
+}
+.publish-container form input[type="file"] {
+  margin-bottom: 20px;
+  outline: none;
+}
+.publish-container textarea {
+  resize: none;
+  outline: none;
+  border: 1px solid #D9E0EB;
+  border-radius: 5px;
+  margin-bottom: 17px;
+  padding: 15px;
+}
+.publish-container p, .euro {
+  font-weight: 700;
+  font-size: 13px;
+}
+.publish-container p {
+  margin-bottom: 10px;
+}
+.price-publish {
+  border: 1px solid #D9E0EB;
+  border-radius: 5px;
+  margin-bottom: 17px;
+  margin-right: 5px;
+  padding: 15px;
+  outline: none;
 }
 
 /* FOOTER */

@@ -7,14 +7,12 @@ const Login = ({ setToken }) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const [error, setError] = useState(0);
 
   const handleEmailChange = e => { setEmail(e.target.value); };
   const handlePasswordChange = e => { setPassword(e.target.value); };
 
   const history = useHistory();
-
 
   const handleSubmitLogin = async (e) => {
     try {
@@ -23,10 +21,9 @@ const Login = ({ setToken }) => {
       else {
         const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/user/log_in",
           {
-            email, password //var email et var password ont le même nom que leur val
+            email, password //var = val
           }
         );
-
         setError(0);
         Cookies.set("token", response.data.token, { expires: 100 });
         setToken(response.data.token);
@@ -39,7 +36,6 @@ const Login = ({ setToken }) => {
         } 
       }
   }
-
 
   return (
     <div className="login-container">
