@@ -28,7 +28,7 @@ const Offers = () => {
         setData(response.data);
         setIsLoading(false);
 
-        setInputTitle("");
+        
       } catch (error) { console.log(error.message); }
     };
     fetchData(); 

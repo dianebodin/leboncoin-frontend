@@ -34,6 +34,7 @@ const Signup = ({ setToken }) => {
             email, username, password //var = val
           }
         );
+
         setError(0);
         Cookies.set("token", response.data.token, { expires: 100 });
         setToken(response.data.token);
