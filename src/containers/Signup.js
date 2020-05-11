@@ -30,7 +30,7 @@ const Signup = ({ setToken }) => {
       else if (password.length < 5) setError(3);
       else if (!checkbox) setError(4);
       else {
-        const response = await axios.post("http://localhost:3000/user/sign_up",
+        const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/user/sign_up",
           {
             email: email,
             username: username,
@@ -39,7 +39,7 @@ const Signup = ({ setToken }) => {
         );
 
         setError(0);
-        Cookies.set("", response.data.token, { expires: 100 });
+        Cookies.set("token", response.data.token, { expires: 100 });
         setToken(response.data.token);
         history.push("/"); 
       }

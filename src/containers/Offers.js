@@ -24,7 +24,7 @@ const Offers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/offer/with-count?title=${inputTitle}&priceMin=${inputPriceMin}&priceMax=${inputPriceMax}&sort=${inputSort}&page=${currentPage}`);
+        const response = await axios.get(`https://leboncoin-backend-db.herokuapp.com/offer/with-count?title=${inputTitle}&priceMin=${inputPriceMin}&priceMax=${inputPriceMax}&sort=${inputSort}&page=${currentPage}`);
         setData(response.data);
         setIsLoading(false);
 

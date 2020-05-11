@@ -21,15 +21,14 @@ const Login = ({ setToken }) => {
       e.preventDefault();
       if (!email || !password) setError(1);
       else {
-        const response = await axios.post("http://localhost:3000/user/log_in",
+        const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/user/log_in",
           {
-            email: email,
-            password: password
+            email, password //var email et var password ont le même nom que leur val
           }
         );
 
         setError(0);
-        Cookies.set("", response.data.token, { expires: 100 });
+        Cookies.set("token", response.data.token, { expires: 100 });
         setToken(response.data.token);
         history.push("/"); 
       }

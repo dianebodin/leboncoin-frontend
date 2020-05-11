@@ -49,9 +49,6 @@ const Search = ({ setInputTitle, setInputPriceMin, setInputPriceMax, setInputSor
           <option value="price-desc">Tri : Prix décroissants</option>
         </select>
       </div>
-
-
-
        
     </div>
   );

@@ -14,7 +14,7 @@ const Offer = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/offer/${params.id}`);
+        const response = await axios.get(`https://leboncoin-backend-db.herokuapp.com/offer/${params.id}`);
         setData(response.data);
         
         setIsLoading(false);
