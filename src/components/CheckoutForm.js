@@ -29,7 +29,7 @@ const CheckoutForm = ({ username, title, price }) => {
       const amount = Number(price_str);
       
       //envoie du token de l'api dans la partie back
-      const response = await axios.post("http://localhost:3000/payment", 
+      const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/payment", 
       { 
         amount: amount,
         title: title,
