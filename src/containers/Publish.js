@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
+import Cookies from "js-cookie";
 //import { useDropzone } from "react-dropzone";
 import '../App.css';
 
-const Publish = ({ token }) => {
+
+const Publish = () => {
+
+  const token = Cookies.get("token"); //plutôt que faire passer le token en props
 
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
@@ -45,8 +49,7 @@ const Publish = ({ token }) => {
 
   return (
     <>
-    {token === null ? ( history.push("/login") ) 
-    : (
+    {token ? (
       <div className="publish-container">
         <div className="title">Déposer une annonce</div>
         
@@ -72,7 +75,7 @@ const Publish = ({ token }) => {
         </form>
 
       </div>
-      )}
+      ) : history.push("/login") }
     </>
   );
 }

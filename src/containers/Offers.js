@@ -4,6 +4,7 @@ import axios from 'axios';
 import moment from "moment/moment";
 import Search from '../components/Search';
 import Pagination from '../components/Pagination';
+import ReactLoading from "react-loading";
 
 
 const Offers = () => {
@@ -27,8 +28,6 @@ const Offers = () => {
         const response = await axios.get(`https://leboncoin-backend-db.herokuapp.com/offer/with-count?title=${inputTitle}&priceMin=${inputPriceMin}&priceMax=${inputPriceMax}&sort=${inputSort}&page=${currentPage}`);
         setData(response.data);
         setIsLoading(false);
-
-        
       } catch (error) { console.log(error.message); }
     };
     fetchData(); 
@@ -43,35 +42,36 @@ const Offers = () => {
   return (
     <>
       <Search setInputTitle={setInputTitle} setInputPriceMin={setInputPriceMin} setInputPriceMax={setInputPriceMax} setInputSort={setInputSort} />
-
-      {isLoading ? (<span className="empty">.</span>) : (
-        <>
-          {data.offers.length > 0 ?
-            (
-              <div className="offers-container">
-                {data.offers.map((item, i) => {
-                  return (
-                    <div key={i}>
-                      <Link to={`/offer/${item._id}`} className="offers-link">
-                        <div className="offers-picture">
-                          <img src={item.picture.secure_url} alt={item.title} />
-                        </div>
-                        <div className="offers-infos">
-                          <div className="title-price">
-                            <p>{item.title}</p>
-                            <p>{item.price} €</p>
+      {isLoading ? 
+        (<div className="loading">
+          <ReactLoading type="spokes" color="black" />
+        </div>) 
+        : (
+          <>
+            {data.offers.length > 0 ?
+              (<div className="offers-container">
+                  {data.offers.map((item, i) => {
+                    return (
+                      <div key={i}>
+                        <Link to={`/offer/${item._id}`} className="offers-link">
+                          <div className="offers-picture">
+                            <img src={item.picture.secure_url} alt={item.title} />
                           </div>
-                          {moment(data.created).format("L")} à {moment(data.created).format("hh:mm")}
-                        </div>
-                      </Link>
-                    </div>
-                  );
-                })}
-              </div>
-            ) : (<div className="no-offers">Aucune offre ne correspond à votre recherche</div>)}
+                          <div className="offers-infos">
+                            <div className="title-price">
+                              <p>{item.title}</p>
+                              <p>{item.price} €</p>
+                            </div>
+                            {moment(item.created).format("L")} à {moment(item.created).format("hh:mm")}
+                          </div>
+                        </Link>
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (<div className="no-offers">Aucune offre ne correspond à votre recherche</div>)}
         </>
       )}
-
       <Pagination count={data.count} clickPage={clickPage}/>
     </>
   );

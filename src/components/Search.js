@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 const Search = ({ setInputTitle, setInputPriceMin, setInputPriceMax, setInputSort }) => { 
 
   const [inputTitleTmp, setInputTitleTmp] = useState("");
@@ -25,7 +26,6 @@ const Search = ({ setInputTitle, setInputPriceMin, setInputPriceMax, setInputSor
       </div>
 
       <div className="search-bar">
-
         <form onSubmit={handleSubmitSearch}>
           <div className="form-search-input">
             <input type="text" className="inputSearch" onChange={handleInputTitleChange} placeholder="Que recherchez-vous ?" />
@@ -33,7 +33,6 @@ const Search = ({ setInputTitle, setInputPriceMin, setInputPriceMax, setInputSor
           </div>
           <input type="submit" value="Rechercher" />
         </form>
-
       </div>
 
       <div className="prices-sort">

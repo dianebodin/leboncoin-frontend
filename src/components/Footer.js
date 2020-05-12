@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Footer = () => {
 
+const Footer = () => {
   return (
     <footer>
       - Réplique de leboncoin -

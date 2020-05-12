@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
-import Cookies from 'js-cookie';
 
-const Login = ({ setToken }) => {
+
+const Login = ({ fetchCookies }) => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -25,8 +25,8 @@ const Login = ({ setToken }) => {
           }
         );
         setError(0);
-        Cookies.set("token", response.data.token, { expires: 100 });
-        setToken(response.data.token);
+        fetchCookies(response.data.token, response.data.account.username);
+
         history.push("/"); 
       }
     } catch (error) { 
@@ -36,6 +36,7 @@ const Login = ({ setToken }) => {
         } 
       }
   }
+
 
   return (
     <div className="login-container">

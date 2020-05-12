@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-import Cookies from 'js-cookie';
 import Instruction from "../components/Instruction";
 
-const Signup = ({ setToken }) => {
+
+const Signup = ({ fetchCookies }) => {
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -36,8 +36,7 @@ const Signup = ({ setToken }) => {
         );
 
         setError(0);
-        Cookies.set("token", response.data.token, { expires: 100 });
-        setToken(response.data.token);
+        fetchCookies(response.data.token, response.data.account.username);
         history.push("/"); 
       }
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+
 const Instruction = ({ title_ins, description_ins, icon_ins }) => {
   return (
     <div className="instruction-container">

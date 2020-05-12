@@ -8,35 +8,50 @@ import Offer from './containers/Offer';
 import Signup from './containers/Signup';
 import Login from './containers/Login';
 import Publish from './containers/Publish';
+import Payment from './containers/Payment';
 //import Footer from './components/Footer';
 
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faPlusSquare, faSearch, faUser, faShoppingCart, faClock, faBell, faEye } from '@fortawesome/free-solid-svg-icons';
 library.add(faPlusSquare, faSearch, faUser, faShoppingCart, faClock, faBell, faEye); 
 
+
 const App = () => {
 
   const [token, setToken] = useState(Cookies.get("token") || null); //récupération du cookie
+  const [userCookie, setUserCookie] = useState(Cookies.get("userCookie") || null);
 
+  const fetchCookies = (res_token, res_username) => {
+    setToken(res_token);
+    setUserCookie(res_username);
+    Cookies.set("token", res_token);
+    Cookies.set("userCookie", res_username);
+  };
+
+  
   return (
     <>
       <Router>
-        <Header token={token} setToken={setToken} />
+        <Header token={token} setToken={setToken} userCookie={userCookie} />
         <Switch>
           <Route path="/offer/:id">
             <Offer />
           </Route>
 
           <Route path="/signup">
-            <Signup setToken={setToken} />
+            <Signup fetchCookies={fetchCookies} />
           </Route>
 
           <Route path="/login">
-            <Login setToken={setToken} />
+            <Login fetchCookies={fetchCookies} />
           </Route>
 
           <Route path="/publish">
-            <Publish token={token} />
+            <Publish />
+          </Route>
+
+          <Route path="/payment">
+            <Payment />
           </Route>
 
           <Route path="/">
