@@ -29,7 +29,7 @@ const Signup = ({ fetchCookies }) => {
       else if (password.length < 5) setError(3);
       else if (!checkbox) setError(4);
       else {
-        const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/user/sign_up",
+        const response = await axios.post(`${process.env.REACT_APP_PATH_BACKEND}/user/sign_up`,
           {
             email, username, password //var = val
           }
@@ -84,12 +84,12 @@ const Signup = ({ fetchCookies }) => {
           </div>
 
           <div className="container-err-msg">
-          {error === 1 ? <div className="err-msg">Champs à remplir</div> : null}
-          {error === 2 ? <div className="err-msg">Les mots de passe ne sont pas identiques</div> : null}
-          {error === 3 ? <div className="err-msg">Le mot de passe contient au moins 5 caractères</div> : null}
-          {error === 4 ? <div className="err-msg">Veuillez accepter les Conditions Générales en cochant la case ci-dessus</div> : null}
-          {error === 5 ? <div className="err-msg">Le pseudo est déjà utilisé</div> : null}
-          {error === 6 ? <div className="err-msg">L'email est déjà utilisé</div> : null}
+            {error === 1 ? <div className="err-msg">Champs à remplir</div> : null}
+            {error === 2 ? <div className="err-msg">Les mots de passe ne sont pas identiques</div> : null}
+            {error === 3 ? <div className="err-msg">Le mot de passe contient au moins 5 caractères</div> : null}
+            {error === 4 ? <div className="err-msg">Veuillez accepter les Conditions Générales en cochant la case ci-dessus</div> : null}
+            {error === 5 ? <div className="err-msg">Le pseudo est déjà utilisé</div> : null}
+            {error === 6 ? <div className="err-msg">L'email est déjà utilisé</div> : null}
           </div>
 
           <input type="submit" value="Créer mon Compte Personnel" />

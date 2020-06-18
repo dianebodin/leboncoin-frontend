@@ -29,13 +29,13 @@ const CheckoutForm = ({ username, title, price }) => {
       const amount = Number(price_str);
       
       //envoie du token de l'api dans la partie back
-      const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/payment", 
+      const response = await axios.post(`${process.env.REACT_APP_PATH_BACKEND}/payment`, 
       { 
         amount: amount,
         title: title,
         stripeToken: stripeResponse.token.id,
       }); 
-            
+      
       if (response.status === 200) {
         setCompleted(true); //transaction réussie
         setError(0);

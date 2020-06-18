@@ -39,7 +39,7 @@ const Publish = () => {
       else if (description.length > 200) setError(3);
       else if (isNaN(price) || Math.sign(price) !== 1 || price > 100000) setError(4);
       else {
-        const response = await axios.post("https://leboncoin-backend-db.herokuapp.com/offer/publish", formData, { headers: { Authorization: "Bearer " + token, "Content-Type": "multipart/form-data" } });
+        const response = await axios.post(`${process.env.REACT_APP_PATH_BACKEND}/offer/publish`, formData, { headers: { Authorization: "Bearer " + token, "Content-Type": "multipart/form-data" } });
         setError(0);
         history.push(`/offer/${response.data._id}`);
       }

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams, Link } from "react-router-dom";
 import axios from 'axios';
 import moment from 'moment/moment';
+import 'moment/locale/fr';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactLoading from "react-loading";
 import Cookies from "js-cookie";
@@ -23,7 +24,7 @@ const Offer = () => {
     setMyOffer(false);
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://leboncoin-backend-db.herokuapp.com/offer/${params.id}`);
+        const response = await axios.get(`${process.env.REACT_APP_PATH_BACKEND}/offer/${params.id}`);
         setData(response.data);
         
         setIsLoading(false);
@@ -48,7 +49,7 @@ const Offer = () => {
     <>
       {isLoading ? 
         (<div className="loading">
-          <ReactLoading type="spokes" color="black" />
+          <ReactLoading type="spokes" color="#f56b2a" />
         </div>) 
         : (
           <div className="offer-container">
@@ -64,7 +65,7 @@ const Offer = () => {
                     <p>{data.title}</p>
                     <p>{data.price} ‎€</p>
                   </div> 
-                  <p>{moment(data.created).format("L")} à {moment(data.created).format("hh:mm")}</p>
+                  <p>{moment(data.created).locale('fr').format('L')} à {moment(data.created).locale('fr').format('LT')}</p>
                 </div>
               </div>
 

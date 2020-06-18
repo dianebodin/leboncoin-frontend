@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import moment from "moment/moment";
+import moment from 'moment/moment';
+import 'moment/locale/fr';
 import Search from '../components/Search';
 import Pagination from '../components/Pagination';
 import ReactLoading from "react-loading";
@@ -25,7 +26,7 @@ const Offers = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`https://leboncoin-backend-db.herokuapp.com/offer/with-count?title=${inputTitle}&priceMin=${inputPriceMin}&priceMax=${inputPriceMax}&sort=${inputSort}&page=${currentPage}`);
+        const response = await axios.get(`${process.env.REACT_APP_PATH_BACKEND}/offer/with-count?title=${inputTitle}&priceMin=${inputPriceMin}&priceMax=${inputPriceMax}&sort=${inputSort}&page=${currentPage}`);
         setData(response.data);
         setIsLoading(false);
       } catch (error) { console.log(error.message); }
@@ -44,7 +45,7 @@ const Offers = () => {
       <Search setInputTitle={setInputTitle} setInputPriceMin={setInputPriceMin} setInputPriceMax={setInputPriceMax} setInputSort={setInputSort} />
       {isLoading ? 
         (<div className="loading">
-          <ReactLoading type="spokes" color="black" />
+          <ReactLoading type="spokes" color="#f56b2a" />
         </div>) 
         : (
           <>
@@ -62,7 +63,7 @@ const Offers = () => {
                               <p>{item.title}</p>
                               <p>{item.price} €</p>
                             </div>
-                            {moment(item.created).format("L")} à {moment(item.created).format("hh:mm")}
+                            {moment(item.created).locale('fr').format('L')} à {moment(item.created).locale('fr').format('LT')}
                           </div>
                         </Link>
                       </div>
