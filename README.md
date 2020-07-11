@@ -10,7 +10,7 @@ yarn
 yarn start
 ```
      
-## Website
+## Webapp
 https://leboncoin-dianebodin.netlify.app
 
 ## Demo
