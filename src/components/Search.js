@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 const Search = ({ setInputTitle, setInputPriceMin, setInputPriceMax, setInputSort }) => { 
 
   const [inputTitleTmp, setInputTitleTmp] = useState("");
@@ -16,8 +15,7 @@ const Search = ({ setInputTitle, setInputPriceMin, setInputPriceMax, setInputSor
       e.preventDefault();
       setInputTitle(inputTitleTmp); //on récupère l'input après avoir cliqué
     } catch (error) { console.log(error.message); }
-  }
-
+  };
 
   return (
     <div className="search-container">
@@ -48,9 +46,8 @@ const Search = ({ setInputTitle, setInputPriceMin, setInputPriceMax, setInputSor
           <option value="price-desc">Tri : Prix décroissants</option>
         </select>
       </div>
-       
     </div>
   );
-}
+};
 
 export default Search;

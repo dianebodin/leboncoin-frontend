@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Instruction from "../components/Instruction";
 
-
 const Signup = ({ fetchCookies }) => {
 
   const [username, setUsername] = useState("");
@@ -46,11 +45,10 @@ const Signup = ({ fetchCookies }) => {
         else if (error.response.data.error === "Email already used") setError(6);
       } 
     }
-  }
+  };
 
   return (
     <div className="signup-container">
-
       <div className="part-left">
         <div className="title">Pourquoi créer un compte ?</div>
         <Instruction icon_ins="clock" title_ins="Gagnez du temps" description_ins="Publiez vos annonces rapidement, avec vos informations pré-remplies chaque fois que vous souhaitez déposer une nouvelle annonce." />
@@ -97,6 +95,6 @@ const Signup = ({ fetchCookies }) => {
       </div>
     </div>
   );
-}
+};
 
 export default Signup;

@@ -1,9 +1,8 @@
 import React from 'react';
-import logo from '../assets/leboncoin.png';
 import { Link, useHistory } from 'react-router-dom';
 import Cookies from 'js-cookie';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import logo from '../assets/leboncoin.png';
 
 const Header = ({ token, setToken, userCookie }) => {
 
@@ -13,9 +12,8 @@ const Header = ({ token, setToken, userCookie }) => {
     setToken(null);
     Cookies.remove("token");
     history.push("/");
-  }
+  };
   
-
   return (
     <nav>
       <ul>
@@ -25,7 +23,6 @@ const Header = ({ token, setToken, userCookie }) => {
               <img src={logo} alt="Logo Leboncoin" />
             </Link>
           </li>
-
           <li>
             <Link to="/publish" className="publish-link">
               <div className="publish-button">
@@ -34,7 +31,6 @@ const Header = ({ token, setToken, userCookie }) => {
               </div>
             </Link>
           </li>
-
           <li>
           <Link to="/offers" className="search-link">
               <FontAwesomeIcon className="header-search-icon" icon="search" />
@@ -42,7 +38,6 @@ const Header = ({ token, setToken, userCookie }) => {
           </Link>
           </li>
         </div>
-
         <li className="header-right">
           {token === null ? (
             <Link to="/login" className="login-button">
@@ -63,6 +58,6 @@ const Header = ({ token, setToken, userCookie }) => {
       </ul>  
     </nav>
   );
-}
+};
 
 export default Header;

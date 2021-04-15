@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 import Cookies from "js-cookie";
-//import { useDropzone } from "react-dropzone";
 import '../App.css';
-
 
 const Publish = () => {
 
@@ -46,38 +44,38 @@ const Publish = () => {
     } catch (error) { console.log(error.message); }
   };
 
-
   return (
     <>
-    {token ? (
-      <div className="publish-container">
-        <div className="title">Déposer une annonce</div>
-        
-        <form onSubmit={handleSubmit}>
-          <p>Titre de l'annonce *</p>
-          <input type="text" className="publish-title" onChange={handleTitleChange} />
-          <p>Texte de l'annonce *</p>
-          <textarea rows="12" onChange={handleDescriptionChange}></textarea>
-          <p>Prix *</p>
-          <span>
-            <input type="text" className="price-publish" onChange={handlePriceChange} /> <span className="euro">€</span>
-          </span>
-          <p>Photo *</p>
-          <input type="file" onChange={handlePictureChange} /> 
+      {token ? 
+        (
+          <div className="publish-container">
+            <div className="title">Déposer une annonce</div>
+            
+            <form onSubmit={handleSubmit}>
+              <p>Titre de l'annonce *</p>
+              <input type="text" className="publish-title" onChange={handleTitleChange} />
+              <p>Texte de l'annonce *</p>
+              <textarea rows="12" onChange={handleDescriptionChange}></textarea>
+              <p>Prix *</p>
+              <span>
+                <input type="text" className="price-publish" onChange={handlePriceChange} /> <span className="euro">€</span>
+              </span>
+              <p>Photo *</p>
+              <input type="file" onChange={handlePictureChange} /> 
 
-          <div className="container-err-msg">
-            {error === 1 ? <div className="err-msg">Champs à remplir</div> : null}
-            {error === 2 ? <div className="err-msg">Le titre doit contenir moins de 30 caractères</div> : null}
-            {error === 3 ? <div className="err-msg">La description doit contenir moins de 200 caractères</div> : null}
-            {error === 4 ? <div className="err-msg">Le prix est incorrect</div> : null}
+              <div className="container-err-msg">
+                {error === 1 ? <div className="err-msg">Champs à remplir</div> : null}
+                {error === 2 ? <div className="err-msg">Le titre doit contenir moins de 30 caractères</div> : null}
+                {error === 3 ? <div className="err-msg">La description doit contenir moins de 200 caractères</div> : null}
+                {error === 4 ? <div className="err-msg">Le prix est incorrect</div> : null}
+              </div>
+              <input type="submit" value="Valider" />
+            </form>
           </div>
-          <input type="submit" value="Valider" />
-        </form>
-
-      </div>
-      ) : history.push("/login") }
+        ) : history.push("/login") 
+      }
     </>
   );
-}
+};
 
 export default Publish;

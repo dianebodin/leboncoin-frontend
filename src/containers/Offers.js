@@ -3,10 +3,9 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import moment from 'moment/moment';
 import 'moment/locale/fr';
+import ReactLoading from "react-loading";
 import Search from '../components/Search';
 import Pagination from '../components/Pagination';
-import ReactLoading from "react-loading";
-
 
 const Offers = () => {
 
@@ -22,7 +21,6 @@ const Offers = () => {
   const [inputPriceMax, setInputPriceMax] = useState(9999);
   const [inputSort, setInputSort] = useState("date-desc");
 
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -34,19 +32,15 @@ const Offers = () => {
     fetchData(); 
   }, [inputTitle, inputPriceMin, inputPriceMax, inputSort, currentPage]); //paramètres query
 
-
-  const clickPage = (nb) => {
-    setCurrentPage(nb);
-  }
-
+  const clickPage = (nb) => setCurrentPage(nb);
 
   return (
     <>
       <Search setInputTitle={setInputTitle} setInputPriceMin={setInputPriceMin} setInputPriceMax={setInputPriceMax} setInputSort={setInputSort} />
       {isLoading ? 
-        (<div className="loading">
+        <div className="loading">
           <ReactLoading type="spokes" color="#f56b2a" />
-        </div>) 
+        </div>
         : (
           <>
             {data.offers.length > 0 ?
@@ -70,12 +64,14 @@ const Offers = () => {
                     );
                   })}
                 </div>
-              ) : (<div className="no-offers">Aucune offre ne correspond à votre recherche</div>)}
-        </>
-      )}
+              ) : <div className="no-offers">Aucune offre ne correspond à votre recherche</div>
+            }
+          </>
+        )
+      }
       <Pagination count={data.count} clickPage={clickPage}/>
     </>
   );
-}
+};
 
 export default Offers;

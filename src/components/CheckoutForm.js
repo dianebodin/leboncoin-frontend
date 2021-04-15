@@ -3,7 +3,6 @@ import { useStripe, useElements, CardElement } from "@stripe/react-stripe-js";
 import axios from "axios";
 import '../App.css';
 
-
 const CheckoutForm = ({ username, title, price }) => {
 
   const stripe = useStripe();
@@ -44,24 +43,23 @@ const CheckoutForm = ({ username, title, price }) => {
     } catch (error) {
       setError(1);
     }
-  }
-
+  };
 
   return (
     <>
-      {!completed ? (
-        <form onSubmit={handleSubmit}>
-          <div>
-            <CardElement />
-          </div>
-          {error === 1 ? <div className="err-payment">Erreur lors de la transaction</div> : null}
-          <button type="submit">Valider</button>
-        </form>
-      ) : (
-        <span className="succeeded">Transaction réussie</span>
-      )}
+      {!completed ? 
+        (
+          <form onSubmit={handleSubmit}>
+            <div>
+              <CardElement />
+            </div>
+            {error === 1 ? <div className="err-payment">Erreur lors de la transaction</div> : null}
+            <button type="submit">Valider</button>
+          </form>
+        ) : <span className="succeeded">Transaction réussie</span>
+      }
     </>
   );
-}
+};
 
 export default CheckoutForm;

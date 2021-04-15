@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { Link, useHistory } from 'react-router-dom';
 
-
 const Login = ({ fetchCookies }) => {
 
   const [email, setEmail] = useState("");
@@ -35,8 +34,7 @@ const Login = ({ fetchCookies }) => {
           else if (error.response.data.error === "Wrong password") setError(3);
         } 
       }
-  }
-
+  };
 
   return (
     <div className="login-container">
@@ -60,8 +58,7 @@ const Login = ({ fetchCookies }) => {
         <Link to="/signup" className="create-account"><span>Créer un compte</span></Link>
       </form>
     </div>
-
   );
-}
+};
 
 export default Login;

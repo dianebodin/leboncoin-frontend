@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import ReactLoading from "react-loading";
 import Cookies from "js-cookie";
 
-
 const Offer = () => {
 
   const token = Cookies.get("token");
@@ -42,15 +41,14 @@ const Offer = () => {
         picture: data.picture.secure_url
       })
     } else setMyOffer(true);
-  }
-
+  };
   
   return (
     <>
       {isLoading ? 
-        (<div className="loading">
+        <div className="loading">
           <ReactLoading type="spokes" color="#f56b2a" />
-        </div>) 
+        </div>
         : (
           <div className="offer-container">
             <div className="left-box">
@@ -72,18 +70,17 @@ const Offer = () => {
               <div className="right-box">
                 <p>{data.creator.account.username}</p>
 
-                {token ? (
+                {token ? 
                   <button onClick={() => fetchInfos(data.creator.account.username)}>
                     <FontAwesomeIcon icon="shopping-cart" className="shopping-icon" /> Acheter
                   </button>
-                ) : 
-                (
+                : 
                   <Link to="/login" className="bis">
                     <button>
                       <FontAwesomeIcon icon="shopping-cart" className="shopping-icon" /> Acheter
                     </button> 
                   </Link>
-                )}
+                }
 
                 {myOffer ? <div className="err-offer">Vous ne pouvez pas acheter votre propre article</div> : null}
               </div>
@@ -92,9 +89,10 @@ const Offer = () => {
             <p className="description-title">Description</p>
             <p className="description">{data.description}</p>
           </div>
-        )}
+        )
+      }
     </>
   );
-}
+};
 
 export default Offer;

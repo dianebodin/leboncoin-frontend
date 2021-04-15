@@ -3,9 +3,8 @@ import Cookies from "js-cookie";
 import { useHistory, useLocation } from "react-router-dom";
 import { loadStripe } from "@stripe/stripe-js";
 import { Elements } from "@stripe/react-stripe-js";
-import CheckoutForm from '../components/CheckoutForm';
 import '../App.css';
-
+import CheckoutForm from '../components/CheckoutForm';
 
 const Payment = () => {
 
@@ -19,29 +18,31 @@ const Payment = () => {
 
   return (
     <>
-      {token ? (
-        <div className="payment-container">
-          <div className="payment">
-            <p>Acheter en ligne</p>
+      {token ? 
+        (
+          <div className="payment-container">
+            <div className="payment">
+              <p>Acheter en ligne</p>
 
-            <div className="payment-infos">
-              <div><img src={picture} alt={title} /></div>
-              <div>{title}</div>
-              <div>{price} €</div>
-            </div>
+              <div className="payment-infos">
+                <div><img src={picture} alt={title} /></div>
+                <div>{title}</div>
+                <div>{price} €</div>
+              </div>
 
-            <div className="bank">
-              <p>Vos coordonnées bancaires</p>
+              <div className="bank">
+                <p>Vos coordonnées bancaires</p>
 
-              <Elements stripe={stripePromise}>
-                <CheckoutForm username={username} title={title} price={price} />
-              </Elements>
+                <Elements stripe={stripePromise}>
+                  <CheckoutForm username={username} title={title} price={price} />
+                </Elements>
+              </div>
             </div>
           </div>
-        </div>
-      ) : history.push("/login") }
+        ) : history.push("/login") 
+      }
     </>
   );
-}
+};
 
 export default Payment;
